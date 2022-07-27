@@ -1,0 +1,11 @@
+label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .card-container.card {
+     max-width: 300px !important;
+     grid-row: 2/3;
+  
+  }
+ 

@@ -1,0 +1,14 @@
+.pull {
+    position: fixed;
+    right: 10px; 
+}
+table {
+    width: 100%
+}
+.mat-row:hover {
+    background-color: #029fdd;
+    cursor: pointer;
+}
+.panel-heading {
+  background-color: rgb(10, 93, 248);
+}

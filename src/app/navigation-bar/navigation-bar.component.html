@@ -1,0 +1,20 @@
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+            <img src="https://talk.openmrs.org/uploads/default/original/2X/8/80fd6086dca0a3a38f9d3b81fdf48196e1fe307f.png"
+                alt="" width="50" height="40">
+        </a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a routerLink = "./welcome" routerLinkActive="active">Home</a></li>
+        <li><a routerLink = "./login" routerLinkActive="active" >Login</a></li>
+        <li ><a routerLink = "./patient" routerLinkActive="active" >Find/Create Patient</a></li>
+        <li ><a routerLink = "./infos" routerLinkActive="active" >InfoSample</a></li>
+        <li *ngIf="checkloggedin" class="pull"><a >Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  

@@ -1,0 +1,89 @@
+<h1>Patient search</h1>
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">Find Patient(s)</div>
+  <form (submit)="onSubmit()" action="#" method="get">
+    <div class="panel-body">
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Patient Identifier or Patient Name</span>
+        <input type="search" name="search" [ngModel]="searchTerm" class="form-control" placeholder="Enter patient name"
+          [(ngModel)]="filterTerm" aria-describedby="basic-addon1">
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <table mat-table  matSort [dataSource] ="dataSource" class="table table-striped table-responsive" >
+    <ng-container matColumnDef="Identifier">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="">Identifier</th>
+      <td mat-cell *matCellDef="let patient">{{patient.display}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="">Name </th>
+      <td mat-cell *matCellDef="let patient">{{patient.person.display}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Age" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="">Age</th>
+      <td mat-cell *matCellDef="let patient">{{patient.person.age}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Gender">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="">Gender</th>
+      <td mat-cell *matCellDef="let patient">{{patient.person.gender}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Birthdate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="">Birthdate</th>
+      <td mat-cell *matCellDef="let patient">{{patient.person.birthdate}}</td>
+    </ng-container>
+    <ng-container matColumnDef="DeathDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="">DeathDate</th>
+      <td mat-cell *matCellDef="let patient">{{patient.person.deathDate}}</td>
+    </ng-container>
+ 
+    <tr mat-header-row *matHeaderRowDef="displayColumn" ></tr>
+    <tr mat-row  *matRowDef="let row ; columns:displayColumn" (click)="displayInfo(row.uuid)"></tr>
+  </table>
+  <mat-paginator
+     [pageSizeOptions]="[5,10,25,100]"
+     aria-labels="select page of users"
+  ></mat-paginator>
+     <!-- <tbody>
+      <tr *ngFor="let patient of patients 
+               | paginate:{
+                itemsPerPage:tableSize,
+                currentPage:page,
+                totalItems:count}; let i = index ">
+        <td><ul *ngFor="let identifier of patient.identifiers" >
+                  <li>
+                    {{identifier['display']}}
+                  </li>
+                </ul></td>
+        <td>[{{patient.identifiers}}]</td>
+        <td>{{patient.display}}</td>
+        <td>{{patient.person.age}}</td>
+        <td>{{patient.person.gender}}</td>
+        <td>{{patient.person.birthdate}}</td>
+        <td>{{patient.person.deathDate}}</td>
+
+    </tbody> -->
+
+</div>
+<p>or </p>
+<div class="panel panel-default">
+  <div class="panel-heading">Create a patient</div>
+  <div class="panel-body">To create a new person, enter the person's name and other information below first to
+    double-check that they don't already have a record in the system.</div>
+  <div class="panel-body">
+    <div id="textbox" class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Patient Name</span>
+      <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+    </div>
+  </div>
+  <div class="panel-body">
+    <div id="textbox" class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Birthdate or age</span>
+      <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+    </div>
+  </div>
+</div>
